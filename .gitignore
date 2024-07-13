@@ -2,3 +2,4 @@ venv
 MLprojects_CI_CD_AWS.egg-info
 logs
 __pycache__
+catboost_info
