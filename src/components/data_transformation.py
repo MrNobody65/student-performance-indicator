@@ -51,6 +51,7 @@ class DataTransformation:
 
             logging.info("Create data transformer")
             return preprocessor
+        
         except Exception as e:
             raise CustomException(e, sys)
         
@@ -76,7 +77,7 @@ class DataTransformation:
             train_arr = np.c_[input_train_arr, np.array(target_train)]
             test_arr = np.c_[input_test_arr, np.array(target_test)]
 
-            logging.info("Applying transformation to data")
+            logging.info("Apply transformation to data")
 
             save_object(
                 file_path=self.data_transformation_config.preprocess_obj_file_path,
@@ -87,8 +88,7 @@ class DataTransformation:
 
             return (
                 train_arr,
-                test_arr,
-                self.data_transformation_config.preprocess_obj_file_path
+                test_arr
             )
         except Exception as e:
             raise CustomException(e, sys)

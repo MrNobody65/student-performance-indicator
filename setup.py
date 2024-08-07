@@ -15,7 +15,7 @@ def get_requirements(file_path: str) -> List[str]:
     return requirements
 
 setup(
-    name='MLprojects-CI-CD-AWS',
+    name='student-performance-indicator',
     version='0.0.1',
     author='MrNobody65',
     author_email='lexuanvu161@gmail.com',

@@ -1,17 +1,13 @@
 from flask import Flask, request, render_template
 
-from src.pipeline.predict_pipeline import CustomData, PredictionPipeline
+from src.pipelines.predict_pipeline import CustomData, PredictionPipeline
 
 application = Flask(__name__)
 
-@application.route('/')
-def index():
-    return render_template('index.html')
-
-@application.route('/predict', methods=["GET", "POST"])
+@application.route('/', methods=["GET", "POST"])
 def predict():
     if request.method == "GET":
-        return render_template('predict.html')
+        return render_template('index.html')
     else:
         data = CustomData(
             gender=request.form.get('gender'),
@@ -28,7 +24,7 @@ def predict():
         predict_pipeline = PredictionPipeline()
         results = predict_pipeline.predict(pred_df)
 
-        return render_template('predict.html', results=results[0])
+        return render_template('index.html', results=results[0])
     
 if __name__ == '__main__':
-    application.run('127.0.0.1', debug=True)
+    application.run('127.0.0.1')

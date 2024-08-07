@@ -12,16 +12,16 @@ class PredictionPipeline:
     def predict(self, input):
             
         try:
-            model_path = os.path.join('artifacts', 'model.pkl')
             preprocessor_path = os.path.join('artifacts', 'preprocessor.pkl')
-
-            model = load_object(model_path)
+            model_path = os.path.join('artifacts', 'model.pkl')
+            
             preprocessor = load_object(preprocessor_path)
+            model = load_object(model_path)
 
             data = preprocessor.transform(input)
-            preds = model.predict(data)
+            pred = model.predict(data)
 
-            return preds
+            return pred
 
         except Exception as e:
             raise CustomException(e, sys)
