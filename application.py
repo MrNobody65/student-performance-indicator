@@ -2,9 +2,9 @@ from flask import Flask, request, render_template
 
 from src.pipelines.predict_pipeline import CustomData, PredictionPipeline
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-@app.route('/', methods=["GET", "POST"])
+@application.route('/', methods=["GET", "POST"])
 def predict():
     if request.method == "GET":
         return render_template('index.html')
@@ -27,4 +27,4 @@ def predict():
         return render_template('index.html', results=results[0])
     
 if __name__ == '__main__':
-    app.run('127.0.0.1')
+    application.run('127.0.0.1')
